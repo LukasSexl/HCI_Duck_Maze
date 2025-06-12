@@ -1,7 +1,8 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1749652503
+::res://::1749722762
 ArduinoScript.cs::CSharpScript/CSharpScript::3255328450687640508::1749649481::0::1::::<>Node<><>0<>0<><>::
 character.gd::GDScript/GDScript::4031289726470302681::1749649152::0::1::::<>CharacterBody2D<><>0<>0<><>::
-character.tscn::PackedScene::3222378669771853596::1749652424::0::1::::<><><>0<>0<><>::uid://dqrrwku5utsqe::::res://icon.svg<>uid://bxo10uixlxlc8::::res://character.gd
+character.tscn::PackedScene::3222378669771853596::1749652852::0::1::::<><><>0<>0<><>::uid://dqrrwku5utsqe::::res://icon.svg<>uid://bxo10uixlxlc8::::res://character.gd
 icon.svg::CompressedTexture2D/CompressedTexture2D::8318450004969922436::1749564520::1749564530::1::::<><><>0<>0<>1abdcadaa046080466a9880af18681c9<>res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex::
-node_2d.tscn::PackedScene::1947499701267008591::1749652424::0::1::::<><><>0<>0<><>::uid://bmm51wjj4hs1y::::res://ArduinoScript.cs<>uid://bl57duoejil2k::::res://character.tscn
+node_2d.tscn::PackedScene::1947499701267008591::1749652852::0::1::::<><><>0<>0<><>::uid://bmm51wjj4hs1y::::res://ArduinoScript.cs<>uid://bl57duoejil2k::::res://character.tscn
+README.md::TextFile::-1::1749722396::0::1::::<><><>0<>0<><>::
