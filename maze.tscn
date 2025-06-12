@@ -1,8 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://dvquwj6tg35b4"]
+[gd_scene load_steps=6 format=3 uid="uid://c8a6f34ug0gqj"]
 
-[ext_resource type="Script" uid="uid://j02y1yym37an" path="res://maze.gd" id="1_dj01w"]
+[ext_resource type="Script" path="res://maze.gd" id="1_dj01w"]
 [ext_resource type="Texture2D" uid="uid://bcw8loi4oinx8" path="res://wall-path-0001.png" id="2_h41xc"]
-[ext_resource type="PackedScene" uid="uid://f2b4w4o2ypn" path="res://player.tscn" id="3_u11kd"]
+[ext_resource type="PackedScene" path="res://player.tscn" id="3_u11kd"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_u11kd"]
 texture = ExtResource("2_h41xc")
