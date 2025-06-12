@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "pJ9zu1rAMN4=",
+  "dgSpecHash": "Vte4xn8OrpA=",
   "success": true,
-  "projectFilePath": "C:\\Users\\user\\OneDrive\\Dokumente\\new-game-project\\New Game Project.csproj",
+  "projectFilePath": "C:\\Users\\user\\OneDrive\\Dokumente\\new-game-project\\HCI_Duck_Maze\\New Game Project.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\user\\.nuget\\packages\\godot.sourcegenerators\\4.4.1\\godot.sourcegenerators.4.4.1.nupkg.sha512",
     "C:\\Users\\user\\.nuget\\packages\\godotsharp\\4.4.1\\godotsharp.4.4.1.nupkg.sha512",
