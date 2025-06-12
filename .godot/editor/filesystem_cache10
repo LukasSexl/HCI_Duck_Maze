@@ -1,8 +1,11 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1749725865
-ArduinoScript.cs::CSharpScript::3255328450687640508::1749722786::0::1::::<>Node<><>0<>0<><>::
-character.gd::GDScript/GDScript::4031289726470302681::1749649152::0::1::::<>CharacterBody2D<><>0<>0<><>::
-character.tscn::PackedScene/PackedScene::3222378669771853596::1749652852::0::1::::<><><>0<>0<><>::uid://dqrrwku5utsqe::::res://icon.svg<>uid://bxo10uixlxlc8::::res://character.gd
+::res://::1749729062
+ArduinoScript.cs::CSharpScript::3255328450687640508::1749728375::0::1::::<>Node<><>0<>0<><>::
+character.gd::GDScript::4031289726470302681::1749728000::0::1::::<>CharacterBody2D<><>0<>0<><>::
+character.tscn::PackedScene::3222378669771853596::1749727961::0::1::::<><><>0<>0<><>::uid://dqrrwku5utsqe::::res://icon.svg<>uid://bxo10uixlxlc8::::res://character.gd
 icon.svg::CompressedTexture2D/CompressedTexture2D::8318450004969922436::1749564520::1749564530::1::::<><><>0<>0<>1abdcadaa046080466a9880af18681c9<>res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex::
-node_2d.tscn::PackedScene::1947499701267008591::1749722786::0::1::::<><><>0<>0<><>::uid://bmm51wjj4hs1y::::res://ArduinoScript.cs<>uid://bl57duoejil2k::::res://character.tscn
+node_2d.tscn::PackedScene::1947499701267008591::1749728375::0::1::::<><><>0<>0<><>::uid://bmm51wjj4hs1y::::res://ArduinoScript.cs<>uid://bl57duoejil2k::::res://character.tscn
 README.md::TextFile/TextFile::-1::1749722396::0::1::::<><><>0<>0<><>::
+maze.tscn::PackedScene::8667511960335691159::1749728911::0::1::::<><><>0<>0<><>::uid://j02y1yym37an::::res://maze.gd
+maze.gd::GDScript::684992658242231341::1749728911::0::1::::<>Node2D<><>0<>0<><>::
+wall-path-0001.png::CompressedTexture2D::2574238735074731683::1749729062::1749729062::1::::<><><>0<>0<>1db7a6b7d2447f079ca020a69a4a6ed9<>res://.godot/imported/wall-path-0001.png-33a8c9b0187b6d535f0e52306819fd47.ctex::

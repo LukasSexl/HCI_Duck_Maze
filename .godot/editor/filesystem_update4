@@ -1,2 +1,8 @@
 res://node_2d.tscn
 res://ArduinoScript.cs
+res://character.tscn
+res://character.gd
+res://maze.tscn
+res://maze.gd
+res://player.tscn
+res://player.gd

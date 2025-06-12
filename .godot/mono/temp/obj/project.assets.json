@@ -1812,11 +1812,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\user\\OneDrive\\Dokumente\\new-game-project\\New Game Project.csproj",
+      "projectUniqueName": "C:\\Users\\user\\OneDrive\\Dokumente\\new-game-project\\HCI_Duck_Maze\\New Game Project.csproj",
       "projectName": "New Game Project",
-      "projectPath": "C:\\Users\\user\\OneDrive\\Dokumente\\new-game-project\\New Game Project.csproj",
+      "projectPath": "C:\\Users\\user\\OneDrive\\Dokumente\\new-game-project\\HCI_Duck_Maze\\New Game Project.csproj",
       "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\user\\OneDrive\\Dokumente\\new-game-project\\.godot\\mono\\temp\\obj\\",
+      "outputPath": "C:\\Users\\user\\OneDrive\\Dokumente\\new-game-project\\HCI_Duck_Maze\\.godot\\mono\\temp\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\user\\AppData\\Roaming\\NuGet\\NuGet.Config"
