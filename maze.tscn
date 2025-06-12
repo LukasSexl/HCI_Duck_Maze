@@ -31,7 +31,7 @@ tile_set = SubResource("TileSet_1nuxl")
 [node name="Button" type="Button" parent="."]
 offset_right = 133.0
 offset_bottom = 31.0
-text = "Randomize Map!"
+text = "Randomize Map"
 
 [node name="player" parent="." instance=ExtResource("3_u11kd")]
 
