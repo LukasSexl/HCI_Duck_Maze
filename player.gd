@@ -42,30 +42,30 @@ func player_animation(movement):
 	if dir == "right":
 		animation.flip_h = false
 		if movement == 1:
-			animation.play("walk_side")
+			animation.play("a_walking")
 		elif movement == 0:
-			animation.play("idle_side")
+			animation.play("a_walking")
 			
 	if dir == "left":
 		animation.flip_h = true
 		if movement == 1:
-			animation.play("walk_side")
+			animation.play("a_walking")
 		elif movement == 0:
-			animation.play("idle_side")
+			animation.play("a_walking")
 			
 	if dir == "up":
 		animation.flip_h = true
 		if movement == 1:
-			animation.play("walk_back")
+			animation.play("a_walking")
 		elif movement == 0:
-			animation.play("idle_back")
+			animation.play("a_walking")
 			
 	if dir == "down":
 		animation.flip_h = true
 		if movement == 1:
-			animation.play("walk_front")
+			animation.play("a_walking")
 		elif movement == 0:
-			animation.play("idle_front")
+			animation.play("a_walking")
 
 func _physics_process(delta: float) -> void:
 	player_movement((delta))

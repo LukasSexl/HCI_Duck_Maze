@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://c8a6f34ug0gqj"]
 
-[ext_resource type="Script" uid="uid://j02y1yym37an" path="res://maze.gd" id="1_dj01w"]
+[ext_resource type="Script" path="res://maze.gd" id="1_dj01w"]
 [ext_resource type="Texture2D" uid="uid://c3m4kcoiy8eje" path="res://tile.png" id="2_u11kd"]
-[ext_resource type="PackedScene" uid="uid://f2b4w4o2ypn" path="res://player.tscn" id="3_u11kd"]
+[ext_resource type="PackedScene" uid="uid://dpwns08svlhbf" path="res://player.tscn" id="3_u11kd"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1nuxl"]
 texture = ExtResource("2_u11kd")
