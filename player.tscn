@@ -290,9 +290,8 @@ debug_color = Color(0, 0.64639, 0.238186, 0.42)
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 visible = false
 sprite_frames = SubResource("SpriteFrames_54uu5")
-animation = &"idle_front"
+animation = &"idle_back"
 autoplay = "idle_front"
-frame_progress = 0.142313
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_onrkg")
