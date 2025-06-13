@@ -7,4 +7,4 @@
 script = ExtResource("1_wtcfe")
 
 [node name="character" parent="." instance=ExtResource("2_0e48y")]
-position = Vector2(20, 500)
+scale = Vector2(0.2, 0.2)

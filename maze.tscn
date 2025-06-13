@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://j02y1yym37an" path="res://maze.gd" id="1_dj01w"]
 [ext_resource type="Texture2D" uid="uid://c3m4kcoiy8eje" path="res://tile.png" id="2_u11kd"]
-[ext_resource type="PackedScene" uid="uid://f2b4w4o2ypn" path="res://player.tscn" id="3_u11kd"]
+[ext_resource type="PackedScene" uid="uid://20nbhdeg4gff" path="res://node_2d.tscn" id="3_u11kd"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1nuxl"]
 texture = ExtResource("2_u11kd")
@@ -33,6 +33,7 @@ offset_right = 133.0
 offset_bottom = 31.0
 text = "Randomize Map"
 
-[node name="player" parent="." instance=ExtResource("3_u11kd")]
+[node name="ArduinoNode" parent="." instance=ExtResource("3_u11kd")]
+position = Vector2(50, 50)
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

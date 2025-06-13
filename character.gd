@@ -10,13 +10,13 @@ func _physics_process(delta):
 	if(ardVal == 5): #right
 		velocity.x = speed
 		velocity.y = 0
-	elif(ardVal == 7): #left
+	elif(ardVal == 6): #left
 		velocity.x = -speed
 		velocity.y = 0
-	elif(ardVal == 8): #up
+	elif(ardVal == 7): #up
 		velocity.x = 0
 		velocity.y = -speed
-	elif(ardVal == 9): #down
+	elif(ardVal == 8): #down
 		velocity.x = 0
 		velocity.y = speed
 	else:
@@ -24,6 +24,6 @@ func _physics_process(delta):
 		velocity.x = 0
 		velocity.y = 0
 		
-	#print(csharp_node.serialMessage);
+	print(csharp_node.serialMessage);
 	
 	move_and_slide()
