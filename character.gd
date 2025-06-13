@@ -3,7 +3,7 @@ const speed = 400
 var current_dir = "none"
 
 func _ready() -> void:
-	$AnimatedSprite2D.play("a_walking")
+	$AnimatedSprite2D.play("standing_down")
 
 
 func _physics_process(delta):
@@ -42,27 +42,27 @@ func player_animation(movement):
 	if dir == "right":
 		animation.flip_h = false
 		if movement == 1:
-			animation.play("a_walking")
+			animation.play("walking_right")
 		elif movement == 0:
-			animation.play("a_walking")
+			animation.play("standing_right")
 			
 	if dir == "left":
 		animation.flip_h = true
 		if movement == 1:
-			animation.play("a_walking")
+			animation.play("walking_left")
 		elif movement == 0:
-			animation.play("a_walking")
+			animation.play("standing_left")
 			
 	if dir == "up":
 		animation.flip_h = true
 		if movement == 1:
-			animation.play("a_walking")
+			animation.play("walking_up")
 		elif movement == 0:
-			animation.play("a_walking")
+			animation.play("standing_up")
 			
 	if dir == "down":
 		animation.flip_h = true
 		if movement == 1:
-			animation.play("a_walking")
+			animation.play("walking_down")
 		elif movement == 0:
-			animation.play("a_walking")
+			animation.play("standing_down")
