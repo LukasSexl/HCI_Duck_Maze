@@ -1,7 +1,9 @@
-[gd_scene load_steps=44 format=3 uid="uid://f2b4w4o2ypn"]
+[gd_scene load_steps=46 format=3 uid="uid://dpwns08svlhbf"]
 
 [ext_resource type="Script" uid="uid://bdxlecu2xrj0n" path="res://player.gd" id="1_4flbx"]
+[ext_resource type="Texture2D" uid="uid://dqwrqcdfk662h" path="res://staartLinks2.png" id="2_hqtel"]
 [ext_resource type="Texture2D" uid="uid://dqrrwku5utsqe" path="res://icon.svg" id="2_onrkg"]
+[ext_resource type="Texture2D" uid="uid://c5nbklabowy3b" path="res://staartRechts2.png" id="3_sweqy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_onrkg"]
 size = Vector2(19, 19)
@@ -125,6 +127,17 @@ region = Rect2(240, 192, 48, 48)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_54uu5"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_hqtel")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_sweqy")
+}],
+"loop": true,
+"name": &"a_walking",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_npe8j")
@@ -289,12 +302,15 @@ shape = SubResource("RectangleShape2D_onrkg")
 debug_color = Color(0, 0.64639, 0.238186, 0.42)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-visible = false
+z_index = 5
+position = Vector2(-3.8147e-06, -3.8147e-06)
+scale = Vector2(3.4375, 3.4375)
 sprite_frames = SubResource("SpriteFrames_54uu5")
-animation = &"idle_back"
+animation = &"a_walking"
 autoplay = "idle_front"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
 texture = ExtResource("2_onrkg")
 
 [node name="Camera2D" type="Camera2D" parent="."]
