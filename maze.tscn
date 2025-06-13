@@ -1,11 +1,11 @@
 [gd_scene load_steps=6 format=3 uid="uid://c8a6f34ug0gqj"]
 
 [ext_resource type="Script" uid="uid://j02y1yym37an" path="res://maze.gd" id="1_dj01w"]
-[ext_resource type="Texture2D" uid="uid://bcw8loi4oinx8" path="res://wall-path-0001.png" id="2_h41xc"]
+[ext_resource type="Texture2D" uid="uid://c3m4kcoiy8eje" path="res://tile.png" id="2_u11kd"]
 [ext_resource type="PackedScene" uid="uid://f2b4w4o2ypn" path="res://player.tscn" id="3_u11kd"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_u11kd"]
-texture = ExtResource("2_h41xc")
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1nuxl"]
+texture = ExtResource("2_u11kd")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
@@ -17,16 +17,16 @@ texture_region_size = Vector2i(32, 32)
 2:1/0 = 0
 3:1/0 = 0
 
-[sub_resource type="TileSet" id="TileSet_1nuxl"]
+[sub_resource type="TileSet" id="TileSet_ugm30"]
 tile_size = Vector2i(32, 32)
 physics_layer_0/collision_layer = 1
-sources/0 = SubResource("TileSetAtlasSource_u11kd")
+sources/0 = SubResource("TileSetAtlasSource_1nuxl")
 
 [node name="Maze" type="Node2D"]
 script = ExtResource("1_dj01w")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
-tile_set = SubResource("TileSet_1nuxl")
+tile_set = SubResource("TileSet_ugm30")
 
 [node name="Button" type="Button" parent="."]
 offset_right = 133.0
