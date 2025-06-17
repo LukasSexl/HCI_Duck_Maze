@@ -29,6 +29,7 @@ script = ExtResource("1_dj01w")
 tile_set = SubResource("TileSet_ugm30")
 
 [node name="Button" type="Button" parent="."]
+visible = false
 offset_right = 133.0
 offset_bottom = 31.0
 text = "Randomize Map"

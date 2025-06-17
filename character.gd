@@ -2,8 +2,29 @@ extends CharacterBody2D
 const speed = 50
 var current_dir = "none"
 
+var lily_collisions = 0
+
 func _ready():
 	$AnimatedSprite2D.play("standing_down")
+
+func on_lily_collision():
+	lily_collisions += 1
+	print("Hit lily count: ", lily_collisions)
+	start_minigame(lily_collisions)
+
+func start_minigame(index: int):
+	match index:
+		1:
+			print("Start minigame 1")
+			get_tree().change_scene_to_file("res://minigame_1.tscn")
+		2:
+			print("Start minigame 2")
+			get_tree().change_scene_to_file("res://minigame_2.tscn")
+		3:
+			print("Start minigame 3")
+			get_tree().change_scene_to_file("res://minigame_3.tscn")
+		_:
+			print("All minigames completed!")
 
 
 func _physics_process(delta):

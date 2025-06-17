@@ -4,8 +4,8 @@ extends Node2D
 @onready var tilemap = $TileMapLayer
 
 # Constants
-const ROWS = 25
-const COLS = 25
+const ROWS = 21
+const COLS = 21
 const WALL = Vector2i(0, 0)  # Wall tile coordinates in tileset
 const PATH = Vector2i(1, 0)  # Path tile coordinates in tileset
 
@@ -93,21 +93,21 @@ func draw_maze():
 	rng.randomize()
 	path_positions.shuffle()
 
-	var baby_duck_scene = load("res://baby_duck.tscn")
+	#var baby_duck_scene = load("res://baby_duck.tscn")
 	var lilly_scene = load("res://water_lilly.tscn")
 
 	for i in range(min(3, path_positions.size())):
 		var pos = path_positions[i]
-		var duck = baby_duck_scene.instantiate()
+		#var duck = baby_duck_scene.instantiate()
 		var lilly = lilly_scene.instantiate()
 
-		duck.position = Vector2(pos.x * 32 + 16, pos.y * 32 + 16)
+		#duck.position = Vector2(pos.x * 32 + 16, pos.y * 32 + 16)
 		lilly.position = Vector2(pos.x * 32 + 16, pos.y * 32 + 16)
 
 		add_child(lilly)
-		add_child(duck)
+		#add_child(duck)
 		
-		print(duck.position)
+		#print(duck.position)
 
 #func _on_button_pressed() -> void:
 	#generate_maze()
