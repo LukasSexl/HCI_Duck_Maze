@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bc4aaayjin12l"]
+
+[ext_resource type="Texture2D" uid="uid://b1k6vmld6dny2" path="res://water_lilly_sprite.png" id="1_iqbc0"]
+
+[node name="water_lilly" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_iqbc0")

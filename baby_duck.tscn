@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://c1f0udwlpiryj"]
+
+[ext_resource type="Texture2D" uid="uid://cimy0okukfsc2" path="res://baby_duck_sprite2.png" id="1_8soxc"]
+
+[node name="baby_duck" type="Node2D"]
+z_index = 11
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_8soxc")

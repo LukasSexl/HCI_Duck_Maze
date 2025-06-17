@@ -15,8 +15,8 @@ var maze = []
 func _ready():
 	# Initialize maze with walls
 	reset_maze()
-	
 	# Generate initial maze
+
 	generate_maze()
 
 func reset_maze():
@@ -78,12 +78,36 @@ func carve_passages(r, c):
 func draw_maze():
 	# Clear the tilemap
 	tilemap.clear()
-	
+	var path_positions = []
+
 	# Draw the maze
 	for r in range(ROWS):
 		for c in range(COLS):
 			var tile_type = WALL if maze[r][c] == 1 else PATH
 			tilemap.set_cell(Vector2i(c, r), 0, tile_type)
+			if maze[r][c] == 0:  # It's a path
+				path_positions.append(Vector2i(c, r))
 
-func _on_button_pressed() -> void:
-	generate_maze()
+		# Shuffle and pick 3 random positions
+	var rng = RandomNumberGenerator.new()
+	rng.randomize()
+	path_positions.shuffle()
+
+	var baby_duck_scene = load("res://baby_duck.tscn")
+	var lilly_scene = load("res://water_lilly.tscn")
+
+	for i in range(min(3, path_positions.size())):
+		var pos = path_positions[i]
+		var duck = baby_duck_scene.instantiate()
+		var lilly = lilly_scene.instantiate()
+
+		duck.position = Vector2(pos.x * 32 + 16, pos.y * 32 + 16)
+		lilly.position = Vector2(pos.x * 32 + 16, pos.y * 32 + 16)
+
+		add_child(lilly)
+		add_child(duck)
+		
+		print(duck.position)
+
+#func _on_button_pressed() -> void:
+	#generate_maze()
