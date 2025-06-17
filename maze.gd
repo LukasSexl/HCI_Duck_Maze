@@ -4,8 +4,8 @@ extends Node2D
 @onready var tilemap = $TileMapLayer
 
 # Constants
-const ROWS = 21
-const COLS = 21
+const ROWS = 7
+const COLS = 7
 const WALL = Vector2i(0, 0)  # Wall tile coordinates in tileset
 const PATH = Vector2i(1, 0)  # Path tile coordinates in tileset
 
@@ -95,6 +95,8 @@ func draw_maze():
 
 	#var baby_duck_scene = load("res://baby_duck.tscn")
 	var lilly_scene = load("res://water_lilly.tscn")
+	
+	
 
 	for i in range(min(3, path_positions.size())):
 		var pos = path_positions[i]
@@ -103,7 +105,7 @@ func draw_maze():
 
 		#duck.position = Vector2(pos.x * 32 + 16, pos.y * 32 + 16)
 		lilly.position = Vector2(pos.x * 32 + 16, pos.y * 32 + 16)
-
+	
 		add_child(lilly)
 		#add_child(duck)
 		

@@ -9,6 +9,12 @@ func _ready():
 
 func on_lily_collision():
 	lily_collisions += 1
+	if(lily_collisions == 1):
+		get_node("Camera2D/ducky1").show()
+	elif(lily_collisions == 2):
+		get_node("Camera2D/ducky2").show()
+	else:
+		get_node("Camera2D/ducky3").show()
 	print("Hit lily count: ", lily_collisions)
 	start_minigame(lily_collisions)
 
@@ -30,7 +36,7 @@ func start_minigame(index: int):
 func _physics_process(delta):
 	
 	var ardVal = 0
-	var csharp_node = get_node("..")
+	var csharp_node = get_parent()
 	#velocity.x = int(csharp_node.serialMessage);
 	ardVal = int(csharp_node.serialMessage);
 	

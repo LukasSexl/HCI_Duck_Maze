@@ -34,7 +34,10 @@ offset_right = 133.0
 offset_bottom = 31.0
 text = "Randomize Map"
 
-[node name="ArduinoNode" parent="." instance=ExtResource("3_u11kd")]
+[node name="node_2d" parent="." instance=ExtResource("3_u11kd")]
 position = Vector2(50, 50)
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+
+[editable path="node_2d"]
+[editable path="node_2d/character"]

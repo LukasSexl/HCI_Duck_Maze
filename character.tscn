@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://bl57duoejil2k"]
+[gd_scene load_steps=20 format=3 uid="uid://bl57duoejil2k"]
 
 [ext_resource type="Script" uid="uid://bxo10uixlxlc8" path="res://character.gd" id="1_pjt0s"]
 [ext_resource type="Texture2D" uid="uid://8j4kgw1jxqnp" path="res://staartLinks2_down.png" id="2_jb3kq"]
@@ -9,6 +9,8 @@
 [ext_resource type="Texture2D" uid="uid://c1xtoynvsjeif" path="res://staartRechts2_down.png" id="6_bwfjh"]
 [ext_resource type="Texture2D" uid="uid://c2uwv8lwyc3di" path="res://staartRechts2_left.png" id="7_x1sy7"]
 [ext_resource type="Texture2D" uid="uid://drgddfqyvbg3p" path="res://staartRechts2_right.png" id="8_sm1rv"]
+[ext_resource type="Texture2D" uid="uid://cimy0okukfsc2" path="res://baby_duck_sprite2.png" id="11_c1b4b"]
+[ext_resource type="Texture2D" uid="uid://bbswmsa0e17sj" path="res://Frame 10.png" id="12_7tnxx"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7v3s4"]
 region = Rect2(0, 0, 48, 48)
@@ -145,7 +147,34 @@ animation = &"walking_down"
 autoplay = "idle_front"
 
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(0.5, 0.5)
+zoom = Vector2(4, 4)
+
+[node name="ducky1" type="Sprite2D" parent="Camera2D"]
+visible = false
+z_index = 15
+position = Vector2(-452, -413)
+scale = Vector2(4.13278, 4.13278)
+texture = ExtResource("11_c1b4b")
+
+[node name="ducky2" type="Sprite2D" parent="Camera2D"]
+visible = false
+z_index = 15
+position = Vector2(-382, -413)
+scale = Vector2(4.13278, 4.13278)
+texture = ExtResource("11_c1b4b")
+
+[node name="ducky3" type="Sprite2D" parent="Camera2D"]
+visible = false
+z_index = 15
+position = Vector2(-312, -413)
+scale = Vector2(4.13278, 4.13278)
+texture = ExtResource("11_c1b4b")
+
+[node name="scoreboard_underlay" type="Sprite2D" parent="Camera2D"]
+position = Vector2(-500, -500)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("12_7tnxx")
+centered = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2(6, 6)
