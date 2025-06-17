@@ -40,6 +40,27 @@ func _physics_process(delta):
 	#velocity.x = int(csharp_node.serialMessage);
 	ardVal = int(csharp_node.serialMessage);
 	
+	
+	var walk = false
+	if(ardVal == 5): #right
+		current_dir = "right"
+	elif(ardVal == 6): #left
+		current_dir = "left"
+	elif(ardVal == 7): #up
+		current_dir = "up"
+	elif(ardVal == 8): #down
+		current_dir = "down"
+	elif(ardVal == 9 && walk == false): #right foot waddle
+		walk = true
+	
+	elif(ardVal == 10 && walk == true): #left foot waddle
+		walk = false
+	else:
+		#player_animation(0)
+		velocity.x = 0
+		velocity.y = 0
+	
+	'''
 	if(ardVal == 5): #right
 		velocity.x = speed
 		velocity.y = 0
@@ -60,7 +81,8 @@ func _physics_process(delta):
 		#player_animation(0)
 		velocity.x = 0
 		velocity.y = 0
-		
+	'''
+			
 	print(csharp_node.serialMessage);
 	
 	move_and_slide()

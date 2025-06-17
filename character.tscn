@@ -143,7 +143,7 @@ z_index = 10
 position = Vector2(-3.8147e-06, -3.8147e-06)
 scale = Vector2(3.4375, 3.4375)
 sprite_frames = SubResource("SpriteFrames_0qfo5")
-animation = &"walking_down"
+animation = &"standing_left"
 autoplay = "idle_front"
 
 [node name="Camera2D" type="Camera2D" parent="."]
