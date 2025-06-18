@@ -34,6 +34,22 @@ region = Rect2(240, 0, 48, 48)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": ExtResource("6_bwfjh")
+}],
+"loop": true,
+"name": &"down_left_foot",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_jb3kq")
+}],
+"loop": true,
+"name": &"down_right_foot",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_7v3s4")
 }, {
 "duration": 1.0,
@@ -57,10 +73,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_jb3kq")
+"texture": ExtResource("7_x1sy7")
 }],
 "loop": true,
-"name": &"standing_down",
+"name": &"left_left_foot",
 "speed": 5.0
 }, {
 "frames": [{
@@ -68,7 +84,15 @@ animations = [{
 "texture": ExtResource("3_c1b4b")
 }],
 "loop": true,
-"name": &"standing_left",
+"name": &"left_right_foot",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_sm1rv")
+}],
+"loop": true,
+"name": &"right_left_foot",
 "speed": 5.0
 }, {
 "frames": [{
@@ -76,7 +100,15 @@ animations = [{
 "texture": ExtResource("4_7tnxx")
 }],
 "loop": true,
-"name": &"standing_right",
+"name": &"right_rigth_foot",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_px5sl")
+}],
+"loop": true,
+"name": &"up_left_foot",
 "speed": 5.0
 }, {
 "frames": [{
@@ -84,7 +116,7 @@ animations = [{
 "texture": ExtResource("3_wfnr8")
 }],
 "loop": true,
-"name": &"standing_up",
+"name": &"up_right_foot",
 "speed": 5.0
 }, {
 "frames": [{
@@ -143,7 +175,7 @@ z_index = 10
 position = Vector2(-3.8147e-06, -3.8147e-06)
 scale = Vector2(3.4375, 3.4375)
 sprite_frames = SubResource("SpriteFrames_0qfo5")
-animation = &"standing_left"
+animation = &"down_right_foot"
 autoplay = "idle_front"
 
 [node name="Camera2D" type="Camera2D" parent="."]
