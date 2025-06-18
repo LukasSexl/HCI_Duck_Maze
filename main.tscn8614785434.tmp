@@ -1,0 +1,79 @@
+[gd_scene load_steps=7 format=3 uid="uid://d1j481tvkvqik"]
+
+[ext_resource type="Script" uid="uid://cmktp4b6qbdk4" path="res://parallax_background.gd" id="1_0xm2m"]
+[ext_resource type="Texture2D" uid="uid://b51kxom7buma1" path="res://offline-sprite-2x.png" id="2_h2yge"]
+[ext_resource type="Script" uid="uid://dvr5mijkersgv" path="res://duck.gd" id="3_1bvp3"]
+[ext_resource type="Texture2D" uid="uid://3rgrfkuapv3g" path="res://Eendenrennen.png" id="4_lquwl"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7mycd"]
+radius = 24.0
+height = 62.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_272bh"]
+size = Vector2(1153, 25)
+
+[node name="Main" type="Node2D"]
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+script = ExtResource("1_0xm2m")
+
+[node name="ColorRect" type="ColorRect" parent="ParallaxBackground"]
+offset_right = 1153.0
+offset_bottom = 337.0
+
+[node name="Clouds" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2(1024, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Clouds"]
+position = Vector2(200, 50)
+texture = ExtResource("2_h2yge")
+region_enabled = true
+region_rect = Rect2(164.934, 2, 93.0656, 27)
+
+[node name="Sprite2D2" type="Sprite2D" parent="ParallaxBackground/Clouds"]
+position = Vector2(400, 20)
+texture = ExtResource("2_h2yge")
+region_enabled = true
+region_rect = Rect2(164.934, 2, 93.0656, 27)
+
+[node name="Sprite2D3" type="Sprite2D" parent="ParallaxBackground/Clouds"]
+position = Vector2(600, 70)
+texture = ExtResource("2_h2yge")
+region_enabled = true
+region_rect = Rect2(164.934, 2, 93.0656, 27)
+
+[node name="Sprite2D4" type="Sprite2D" parent="ParallaxBackground/Clouds"]
+position = Vector2(800, 100)
+texture = ExtResource("2_h2yge")
+region_enabled = true
+region_rect = Rect2(164.934, 2, 93.0656, 27)
+
+[node name="Floor" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2(1200, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Floor"]
+position = Vector2(0, 300)
+texture = ExtResource("2_h2yge")
+centered = false
+region_enabled = true
+region_rect = Rect2(2, 104, 2400, 24)
+
+[node name="Duck" type="CharacterBody2D" parent="."]
+script = ExtResource("3_1bvp3")
+
+[node name="Sprite2D" type="Sprite2D" parent="Duck"]
+position = Vector2(68, 276)
+scale = Vector2(1.70083, 1.5375)
+texture = ExtResource("4_lquwl")
+hframes = 10
+region_rect = Rect2(7, 32, 21, 28)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Duck"]
+position = Vector2(73, 300)
+shape = SubResource("CapsuleShape2D_7mycd")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(576, 337)
+shape = SubResource("RectangleShape2D_272bh")

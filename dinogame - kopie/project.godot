@@ -10,35 +10,24 @@ config_version=5
 
 [application]
 
-config/name="HCI Duck Maze"
-run/main_scene="uid://c8a6f34ug0gqj"
-config/features=PackedStringArray("4.4", "C#", "Forward Plus")
+config/name="Dinogame"
+config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
-
-[display]
-
-window/size/viewport_width=800
-window/size/viewport_height=800
-window/size/resizable=false
-window/size/borderless=true
 
 [dotnet]
 
-project/assembly_name="New Game Project"
+project/assembly_name="Dinogame"
 
 [input]
 
 jump={
-"deadzone": 0.2,
+"deadzone": 0.5,
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":4194320,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":32,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
 ]
 }
 down={
-"deadzone": 0.2,
+"deadzone": 0.5,
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":4194322,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
 ]
 }
-
-[rendering]
-
-textures/canvas_textures/default_texture_filter=0
