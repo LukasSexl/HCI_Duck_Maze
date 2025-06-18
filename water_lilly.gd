@@ -5,7 +5,7 @@ var triggered = false  # Prevent double triggering
 
 func _ready():
 	connect("body_entered", Callable(self, "_on_body_entered"))
-	get_tree().root.print_tree()
+	#get_tree().root.print_tree()
 
 	#get_node("Maze/node_2d/character/Camera2D/ducky1").visible = true
 
