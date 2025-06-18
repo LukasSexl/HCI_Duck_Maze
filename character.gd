@@ -1,6 +1,7 @@
 extends CharacterBody2D 
 
-const STEP_DISTANCE := 400
+const STEP_DISTANCE := 100
+
 var walk := false
 var last_step_val := -1
 var move_direction := Vector2.RIGHT  # Default direction
@@ -17,29 +18,28 @@ func _physics_process(delta):
 
 	# Direction changes (always allowed)
 	match ardVal:
-		5:
+		1:
 			move_direction = Vector2.RIGHT
 			direction_string = "right"
-		6:
+		2:
 			move_direction = Vector2.LEFT
 			direction_string = "left"
-		7:
+		3:
 			move_direction = Vector2.UP
 			direction_string = "up"
-		8:
+		4:
 			move_direction = Vector2.DOWN
 			direction_string = "down"
 
 	# Update animation if direction changed
 	if direction_string != last_direction_string:
-		# Use current walk state to select foot animation or default to one
 		var foot := "left_foot" if walk else "right_foot"
 		$AnimatedSprite2D.play(direction_string + "_" + foot)
 		last_direction_string = direction_string
 
 	# Step trigger — only when 1 or 2 is newly received
-	if (ardVal == 1 or ardVal == 2) and ardVal != last_step_val:
-		walk = !walk
+	if (ardVal == 11 or ardVal == 0) and ardVal != last_step_val:
+		walk = !walk  # Alternate foot
 
 		var foot := "left_foot" if walk else "right_foot"
 		$AnimatedSprite2D.play(direction_string + "_" + foot)
@@ -47,11 +47,11 @@ func _physics_process(delta):
 		velocity = move_direction * STEP_DISTANCE
 		move_and_slide()
 
-	# Store last step input separately
-	if ardVal == 1 or ardVal == 2:
+	if ardVal == 11 or ardVal == 20:
 		last_step_val = ardVal
 	else:
 		last_step_val = -1
+
 
 
 func on_lily_collision():
