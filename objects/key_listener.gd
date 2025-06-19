@@ -99,7 +99,6 @@ func _process(delta):
 	
 
 func CreateFallingKey(button_name: String):
-	print("i am asked to create a falling key with button name " + button_name)
 	if button_name == key_name:
 		var fk_inst = falling_key.instantiate()
 		get_tree().get_root().call_deferred("add_child", fk_inst)

@@ -47,6 +47,7 @@ environment = SubResource("Environment_i5mjo")
 [node name="LevelEditor" parent="." instance=ExtResource("4_1wrej")]
 
 [node name="ArduinoScript" parent="." instance=ExtResource("5_2i5ty")]
+SkipFrames = 25
 
 [connection signal="CustomInput" from="ArduinoScript" to="KeyListener 1" method="_on_arduino_script_custom_input"]
 [connection signal="CustomInput" from="ArduinoScript" to="KeyListener 2" method="_on_arduino_script_custom_input"]
