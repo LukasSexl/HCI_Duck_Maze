@@ -78,30 +78,42 @@ func add_segment(pos: Vector2, direction: Vector2 = Vector2(0, -1)):
 
 func _process(delta):
 	move_snake()
-	
+
+
+var previous_ardV := -1
+var ardV = 0
+
+func _on_arduino_script_custom_input(arduinoValue: String) -> void:
+	var ardVal := int(arduinoValue)
+	ardV = ardVal
+
 func move_snake():
+	ardV = -1  # Reset input for next frame
+
 	if can_move:
 		#update movement from keypresses
-		if Input.is_action_just_pressed("move_down") and move_direction != up:
+		if ardV == 4 and move_direction != up:
 			move_direction = down
 			can_move = false
 			if not game_started:
 				start_game()
-		if Input.is_action_just_pressed("move_up") and move_direction != down:
+		if ardV == 3 and move_direction != down:
 			move_direction = up
 			can_move = false
 			if not game_started:
 				start_game()
-		if Input.is_action_just_pressed("move_left") and move_direction != right:
+		if ardV == 2 and move_direction != right:
 			move_direction = left
 			can_move = false
 			if not game_started:
 				start_game()
-		if Input.is_action_just_pressed("move_right") and move_direction != left:
+		if ardV == 1 and move_direction != left:
 			move_direction = right
 			can_move = false
 			if not game_started:
 				start_game()
+	previous_ardV = ardV
+
 
 func start_game():
 	game_started = true
@@ -207,5 +219,4 @@ func end_game():
 
 func _on_canvas_over_menu_restart() -> void:
 	new_game()
-	
 	

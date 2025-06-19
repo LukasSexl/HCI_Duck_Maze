@@ -1,0 +1,54 @@
+[gd_scene load_steps=7 format=3 uid="uid://b8f1ign6hpicr"]
+
+[ext_resource type="PackedScene" uid="uid://dfdglmltorqae" path="res://objects/key_listener.tscn" id="1_h3xak"]
+[ext_resource type="Texture2D" uid="uid://dpfk7sq3vqx4i" path="res://art/game achtergrond.jpeg" id="1_n0b0m"]
+[ext_resource type="PackedScene" uid="uid://dpc13ucm0i8fg" path="res://levels/game_ui.tscn" id="2_l1p8s"]
+[ext_resource type="PackedScene" uid="uid://coqj034dvvbeu" path="res://objects/level_editor.tscn" id="4_1wrej"]
+[ext_resource type="PackedScene" uid="uid://dcc2s5dxrykp5" path="res://arduinoscript.tscn" id="5_2i5ty"]
+
+[sub_resource type="Environment" id="Environment_i5mjo"]
+background_mode = 3
+glow_enabled = true
+glow_blend_mode = 1
+
+[node name="GameLevel" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(1.33331, -1)
+scale = Vector2(2.72, 2.72)
+texture = ExtResource("1_n0b0m")
+
+[node name="KeyListener 1" parent="." instance=ExtResource("1_h3xak")]
+position = Vector2(-120, 280)
+key_name = "1"
+
+[node name="KeyListener 2" parent="." instance=ExtResource("1_h3xak")]
+position = Vector2(-40, 280)
+frame = 1
+key_name = "2"
+
+[node name="KeyListener 3" parent="." instance=ExtResource("1_h3xak")]
+position = Vector2(40, 280)
+frame = 2
+key_name = "3"
+
+[node name="KeyListener 4" parent="." instance=ExtResource("1_h3xak")]
+position = Vector2(120, 280)
+frame = 3
+key_name = "4"
+
+[node name="GameUI" parent="." instance=ExtResource("2_l1p8s")]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_i5mjo")
+
+[node name="LevelEditor" parent="." instance=ExtResource("4_1wrej")]
+
+[node name="ArduinoScript" parent="." instance=ExtResource("5_2i5ty")]
+
+[connection signal="CustomInput" from="ArduinoScript" to="KeyListener 1" method="_on_arduino_script_custom_input"]
+[connection signal="CustomInput" from="ArduinoScript" to="KeyListener 2" method="_on_arduino_script_custom_input"]
+[connection signal="CustomInput" from="ArduinoScript" to="KeyListener 3" method="_on_arduino_script_custom_input"]
+[connection signal="CustomInput" from="ArduinoScript" to="KeyListener 4" method="_on_arduino_script_custom_input"]

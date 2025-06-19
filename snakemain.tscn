@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://btk4gnbwgq4jx"]
+[gd_scene load_steps=14 format=3 uid="uid://btk4gnbwgq4jx"]
 
 [ext_resource type="Script" uid="uid://cwtrso4j2x0hj" path="res://snakemain.gd" id="1_3tnce"]
 [ext_resource type="PackedScene" uid="uid://djaq2sjv213ba" path="res://snake_segment.tscn" id="2_u61ii"]
@@ -12,6 +12,7 @@
 [ext_resource type="AudioStream" uid="uid://cou01e4qn51n5" path="res://soundeffects/bruh_sound.mp3" id="10_op6a5"]
 [ext_resource type="AudioStream" uid="uid://d1jk4ef2ynske" path="res://soundeffects/celebration_sound.mp3" id="11_ohci8"]
 [ext_resource type="Script" uid="uid://b6ma2js2qn0ck" path="res://grid_tile.gd" id="12_u61ii"]
+[ext_resource type="PackedScene" uid="uid://dcc2s5dxrykp5" path="res://arduinoscript.tscn" id="13_sxa3x"]
 
 [node name="snakemain" type="Node"]
 script = ExtResource("1_3tnce")
@@ -60,5 +61,8 @@ volume_db = 2.0
 format = 2
 script = ExtResource("12_u61ii")
 
+[node name="ArduinoScript" parent="." instance=ExtResource("13_sxa3x")]
+
 [connection signal="timeout" from="MoveTimer" to="." method="_on_move_timer_timeout"]
 [connection signal="restart" from="CanvasOverMenu" to="." method="_on_canvas_over_menu_restart"]
+[connection signal="CustomInput" from="ArduinoScript" to="." method="_on_arduino_script_custom_input"]
