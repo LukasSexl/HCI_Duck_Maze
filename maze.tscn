@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://c8a6f34ug0gqj"]
+[gd_scene load_steps=7 format=3 uid="uid://c8a6f34ug0gqj"]
 
 [ext_resource type="Script" uid="uid://j02y1yym37an" path="res://maze.gd" id="1_dj01w"]
 [ext_resource type="Texture2D" uid="uid://c3m4kcoiy8eje" path="res://tile.png" id="2_u11kd"]
 [ext_resource type="PackedScene" uid="uid://20nbhdeg4gff" path="res://node_2d.tscn" id="3_u11kd"]
+[ext_resource type="PackedScene" uid="uid://dcc2s5dxrykp5" path="res://arduinoscript.tscn" id="4_1nuxl"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1nuxl"]
 texture = ExtResource("2_u11kd")
@@ -36,8 +37,12 @@ text = "Randomize Map"
 
 [node name="node_2d" parent="." instance=ExtResource("3_u11kd")]
 position = Vector2(50, 50)
+script = null
+
+[node name="ArduinoScript" parent="." instance=ExtResource("4_1nuxl")]
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="CustomInput" from="ArduinoScript" to="node_2d/character" method="_on_arduino_script_custom_input"]
 
 [editable path="node_2d"]
 [editable path="node_2d/character"]

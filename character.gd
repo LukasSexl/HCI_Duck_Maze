@@ -13,46 +13,9 @@ func _ready():
 	$AnimatedSprite2D.play("right_left_foot")
 
 func _physics_process(delta):
-	var csharp_node = get_parent()
-	var ardVal := int(csharp_node.serialMessage)
-
-	# Direction changes (always allowed)
-	match ardVal:
-		1:
-			move_direction = Vector2.RIGHT
-			direction_string = "right"
-		2:
-			move_direction = Vector2.LEFT
-			direction_string = "left"
-		3:
-			move_direction = Vector2.UP
-			direction_string = "up"
-		4:
-			move_direction = Vector2.DOWN
-			direction_string = "down"
-
+	var ardVal = 3
 	# Update animation if direction changed
-	if direction_string != last_direction_string:
-		var foot := "left_foot" if walk else "right_foot"
-		$AnimatedSprite2D.play(direction_string + "_" + foot)
-		last_direction_string = direction_string
-
-	# Step trigger — only when 1 or 2 is newly received
-	if (ardVal == 11 or ardVal == 0) and ardVal != last_step_val:
-		walk = !walk  # Alternate foot
-
-		var foot := "left_foot" if walk else "right_foot"
-		$AnimatedSprite2D.play(direction_string + "_" + foot)
-
-		velocity = move_direction * STEP_DISTANCE
-		move_and_slide()
-
-	if ardVal == 11 or ardVal == 20:
-		last_step_val = ardVal
-	else:
-		last_step_val = -1
-
-
+	
 
 func on_lily_collision():
 	lily_collisions += 1
@@ -78,3 +41,43 @@ func start_minigame(index: int):
 			get_tree().change_scene_to_file("res://minigame_3.tscn")
 		_:
 			print("All minigames completed!")
+
+
+func _on_arduino_script_custom_input(arduinoValue: String) -> void:
+	var ardVal := int(arduinoValue)
+
+	# Update direction for any value (even when not walking)
+	match ardVal:
+		1:
+			move_direction = Vector2.RIGHT
+			direction_string = "right"
+		2:
+			move_direction = Vector2.LEFT
+			direction_string = "left"
+		3:
+			move_direction = Vector2.UP
+			direction_string = "up"
+		4:
+			move_direction = Vector2.DOWN
+			direction_string = "down"
+
+	# Always update animation if direction changed (even if not stepping)
+	if direction_string != last_direction_string:
+		var foot := "left_foot" if walk else "right_foot"
+		$AnimatedSprite2D.play(direction_string + "_" + foot)
+		last_direction_string = direction_string
+
+	# Step trigger — only when 0 or 11 is received and not the same as last
+	if (ardVal == 11 or ardVal == 0) and ardVal != last_step_val:
+		walk = !walk  # Alternate foot
+		var foot := "left_foot" if walk else "right_foot"
+		$AnimatedSprite2D.play(direction_string + "_" + foot)
+
+		velocity = move_direction * STEP_DISTANCE
+		move_and_slide()
+
+	# Prevent repeated stepping from same signal
+	if ardVal == 11 or ardVal == 0:
+		last_step_val = ardVal
+	else:
+		last_step_val = -1

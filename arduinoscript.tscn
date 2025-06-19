@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dcc2s5dxrykp5"]
+
+[ext_resource type="Script" uid="uid://bmm51wjj4hs1y" path="res://ArduinoScript.cs" id="1_0tus5"]
+
+[node name="ArduinoScript" type="Node"]
+script = ExtResource("1_0tus5")

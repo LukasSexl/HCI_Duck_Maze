@@ -2,46 +2,74 @@ using Godot;
 using System;
 using System.IO.Ports;
 
-//github change test
-//test 2
+public partial class ArduinoScript : Node
+{
+	private SerialPort serialPort;
+	private string _serialMessage = "";
 
-	public partial class ArduinoScript : Node
+	public string serialMessage;
+
+	[Signal]
+	public delegate void CustomInputEventHandler(string arduinoValue); // ✅ Must end with 'EventHandler'
+
+	public override void _Ready()
 	{
-		public string serialMessage;
-
-		SerialPort serialPort;
-
-		// Called when the node enters the scene tree for the first time.
-		public override void _Ready()
+		try
 		{
-		serialPort = new SerialPort();
-		serialPort.PortName = "COM4";
-		serialPort.BaudRate = 9600; //make sure this is the same in Arduino as it is in Godot.
-		serialPort.Open();
+			serialPort = new SerialPort
+			{
+				PortName = "COM4",
+				BaudRate = 9600,
+				ReadTimeout = 100
+			};
+			serialPort.Open();
+			GD.Print("Serial port opened.");
+
+			Connect("CustomInput", new Callable(this, nameof(OnCustomInput)));
+		}
+		catch (Exception ex)
+		{
+			GD.PrintErr("Error opening serial port: " + ex.Message);
+		}
 	}
 
 	public override void _Process(double delta)
 	{
-		if(!serialPort.IsOpen) return; //checks if serial port is open, if it's not do nothing.
+		if (serialPort == null || !serialPort.IsOpen)
+			return;
 
-		serialMessage = serialPort.ReadLine();
-		//int value = int.Parse(serialMessage);
-		//if(serialMessage.StartsWith("Hey")){
-		//if(serialMessage > 10000){
-			//GD.Print(serialMessage);
-			//text.Text = "Hello Arduino, I hear you :)";
-			//hasHeardFromArduino = true;
-			//timer = Time.GetTicksMsec();
-		//}else{
-		//	GD.Print(serialMessage);
-		//	text.Text = "";
-		//}
+		try
+		{
+			_serialMessage = serialPort.ReadLine().Trim();
+			serialMessage = _serialMessage;
+			EmitSignal("CustomInput", serialMessage);
+		}
+		catch (TimeoutException)
+		{
+			// Ignore timeouts (no data)
+		}
+		catch (Exception ex)
+		{
+			GD.PrintErr("Error reading from serial: " + ex.Message);
+		}
+	}
 
-		/*	if(hasHeardFromArduino && Time.GetTicksMsec() - timer > 3000){
-				text.Text += "\n Turning on the Light for you :D";
-				serialPort.Write("1");
-				hasHeardFromArduino = false;
-			}
-			*/
+	private void OnCustomInput(string arduinoValue)
+	{
+		//GD.Print("Received from Arduino: " + arduinoValue);
 	}
+
+	public string GetSerialMessage()
+	{
+		return _serialMessage;
 	}
+
+	public override void _ExitTree()
+	{
+		if (serialPort != null && serialPort.IsOpen)
+		{
+			serialPort.Close();
+			GD.Print("Serial port closed.");
+		}
+	}
+}

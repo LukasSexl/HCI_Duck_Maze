@@ -11,23 +11,25 @@ func _physics_process(delta):
 		return
 	# Zwaartekracht toepassen
 	var _applied_gravity = gravity
-
+"""
 	# Als speler naar beneden duikt, verhoog de zwaartekracht
-	if Input.is_action_pressed("ui_down"):
+	if Global.ardV == 4: #Input.is_action_pressed("ui_down"):
 		_applied_gravity = dive_force
 		
 	velocity.y += gravity * delta
 
 	# Springen bij pijl omhoog, alleen als je op de grond staat
-	if Input.is_action_just_pressed("ui_up") and is_on_floor():
+	if Global.ardV == 3 and is_on_floor():  #Input.is_action_just_pressed("ui_up") and is_on_floor():
 		velocity.y = -jump_force  # Negatief om omhoog te gaan
+		print("hellooo")
 		
-	if is_on_floor() and !Input.is_action_pressed("down"):
+	if Global.ardV != 4 and is_on_floor(): #is_on_floor() and !Input.is_action_pressed("down"):
 		$AnimationPlayer.play("RUNNING")
-	if is_on_floor() and Input.is_action_pressed("down"):
+	if is_on_floor() and Global.ardV == 4: #is_on_floor() and Input.is_action_pressed("down"):
 		$AnimationPlayer.play("down")
 	if !is_on_floor():
 		$AnimationPlayer.play("DUCK")
- 
-	# Beweging uitvoeren
+		
+			# Beweging uitvoeren
 	move_and_slide()
+ """

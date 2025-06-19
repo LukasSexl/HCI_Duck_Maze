@@ -8,13 +8,30 @@ var Bloemen_scene = preload("res://bloemen.tscn")
 
 func _process(_delta):
 	if !start:
-		if Input.is_action_just_pressed("jump"):
+		#print("my name is lukas")
+		"""print(Global.ardV)
+		if Global.ardV == 3: #Input.is_action_just_pressed("jump"):
+			print("hellooo2")
+
 			start = true
 			$Duck.start = true
 			$ParallaxBackground.playing = true
 			$Timer.start()
-		
+		"""
 
+func _on_arduino_script_custom_input(arduinoValue: String) -> void:
+	var ardVal := int(arduinoValue)
+	if !start:
+		#print("my name is lukas")
+		#print(Global.ardV)
+		if ardVal == 3: #Input.is_action_just_pressed("jump"):
+			print("hellooo2")
+
+			start = true
+			$Duck.start = true
+			$ParallaxBackground.playing = true
+			$Timer.start()
+	
 
 func _on_timer_timeout() -> void:
 	spawn_Bloemen()
