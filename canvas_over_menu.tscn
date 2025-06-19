@@ -1,0 +1,65 @@
+[gd_scene load_steps=4 format=3 uid="uid://dd1g27qneoc02"]
+
+[ext_resource type="Script" uid="uid://etf5h8qi32iv" path="res://canvas_over_menu.gd" id="1_82166"]
+[ext_resource type="FontFile" uid="uid://r5ttqaxnuvgk" path="res://assets/MaldiniBold.ttf" id="1_dgvka"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dgvka"]
+bg_color = Color(0.915444, 0.438498, 0.317286, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+shadow_color = Color(0.533037, 0.533037, 0.533037, 0.6)
+shadow_size = 8
+shadow_offset = Vector2(5, 5)
+
+[node name="CanvasOverMenu" type="CanvasLayer"]
+script = ExtResource("1_82166")
+
+[node name="LosePanel" type="Panel" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -180.0
+offset_top = -125.0
+offset_right = 220.0
+offset_bottom = 135.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_dgvka")
+
+[node name="LoseLabel" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -80.0
+offset_top = -75.0
+offset_right = 126.0
+offset_bottom = -14.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_dgvka")
+theme_override_font_sizes/font_size = 60
+text = "Nice Try!"
+
+[node name="RestartButton" type="Button" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -80.0
+offset_top = 5.0
+offset_right = 120.0
+offset_bottom = 85.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_dgvka")
+theme_override_font_sizes/font_size = 40
+text = "Try Again"
+
+[connection signal="pressed" from="RestartButton" to="." method="_on_restart_button_pressed"]

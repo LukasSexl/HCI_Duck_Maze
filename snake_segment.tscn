@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://djaq2sjv213ba"]
+
+[ext_resource type="Texture2D" uid="uid://coceqpqumrifm" path="res://assets/duck.png" id="1_n700c"]
+
+[node name="SnakeSegment" type="Sprite2D" groups=["segments"]]
+position = Vector2(162.25, 156.25)
+scale = Vector2(0.069375, 0.069375)
+texture = ExtResource("1_n700c")

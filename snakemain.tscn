@@ -1,0 +1,64 @@
+[gd_scene load_steps=13 format=3 uid="uid://btk4gnbwgq4jx"]
+
+[ext_resource type="Script" uid="uid://cwtrso4j2x0hj" path="res://snakemain.gd" id="1_3tnce"]
+[ext_resource type="PackedScene" uid="uid://djaq2sjv213ba" path="res://snake_segment.tscn" id="2_u61ii"]
+[ext_resource type="Texture2D" uid="uid://drli8ura4om1s" path="res://assets/tile2.jpg" id="3_sxa3x"]
+[ext_resource type="PackedScene" uid="uid://cn5t6cga3vpwq" path="res://hud.tscn" id="4_swhif"]
+[ext_resource type="Texture2D" uid="uid://coceqpqumrifm" path="res://assets/duck.png" id="5_4aw8s"]
+[ext_resource type="AudioStream" uid="uid://bkyoa7voqitup" path="res://soundeffects/duck_sound.mp3" id="6_ie5d2"]
+[ext_resource type="PackedScene" uid="uid://cbawdjbqugp65" path="res://audio_stream_player.tscn" id="7_hy00v"]
+[ext_resource type="PackedScene" uid="uid://dd1g27qneoc02" path="res://canvas_over_menu.tscn" id="8_3p7uc"]
+[ext_resource type="PackedScene" uid="uid://dihtn85elptem" path="res://win_menu.tscn" id="9_povmk"]
+[ext_resource type="AudioStream" uid="uid://cou01e4qn51n5" path="res://soundeffects/bruh_sound.mp3" id="10_op6a5"]
+[ext_resource type="AudioStream" uid="uid://d1jk4ef2ynske" path="res://soundeffects/celebration_sound.mp3" id="11_ohci8"]
+[ext_resource type="Script" uid="uid://b6ma2js2qn0ck" path="res://grid_tile.gd" id="12_u61ii"]
+
+[node name="snakemain" type="Node"]
+script = ExtResource("1_3tnce")
+snake_scene = ExtResource("2_u61ii")
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(500, 549.5)
+scale = Vector2(31.25, 31.2813)
+texture = ExtResource("3_sxa3x")
+
+[node name="Hud" parent="." instance=ExtResource("4_swhif")]
+
+[node name="MoveTimer" type="Timer" parent="."]
+wait_time = 0.4
+
+[node name="Food" type="Sprite2D" parent="."]
+scale = Vector2(2, 2)
+texture = ExtResource("5_4aw8s")
+
+[node name="EatSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_ie5d2")
+
+[node name="AudioStreamPlayer" parent="." instance=ExtResource("7_hy00v")]
+parameters/looping = false
+
+[node name="SnakeSegment" parent="." instance=ExtResource("2_u61ii")]
+
+[node name="CanvasOverMenu" parent="." instance=ExtResource("8_3p7uc")]
+process_mode = 2
+visible = false
+
+[node name="WinMenu" parent="." instance=ExtResource("9_povmk")]
+visible = false
+
+[node name="LoseSound" type="AudioStreamPlayer2D" parent="."]
+process_mode = 3
+stream = ExtResource("10_op6a5")
+volume_db = 2.0
+
+[node name="WinSound" type="AudioStreamPlayer2D" parent="."]
+process_mode = 3
+stream = ExtResource("11_ohci8")
+volume_db = 2.0
+
+[node name="GridTile" type="TileMap" parent="."]
+format = 2
+script = ExtResource("12_u61ii")
+
+[connection signal="timeout" from="MoveTimer" to="." method="_on_move_timer_timeout"]
+[connection signal="restart" from="CanvasOverMenu" to="." method="_on_canvas_over_menu_restart"]
