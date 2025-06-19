@@ -6,10 +6,11 @@ var Bloemen_scene = preload("res://bloemen.tscn")
 @onready var parallax_background: ParallaxBackground = $ParallaxBackground
 
 
+"""
 func _process(_delta):
 	if !start:
 		#print("my name is lukas")
-		"""print(Global.ardV)
+		print(Global.ardV)
 		if Global.ardV == 3: #Input.is_action_just_pressed("jump"):
 			print("hellooo2")
 
@@ -18,19 +19,21 @@ func _process(_delta):
 			$ParallaxBackground.playing = true
 			$Timer.start()
 		"""
+var ardV = 0
 
 func _on_arduino_script_custom_input(arduinoValue: String) -> void:
 	var ardVal := int(arduinoValue)
+	ardV = ardVal
 	if !start:
 		#print("my name is lukas")
 		#print(Global.ardV)
 		if ardVal == 3: #Input.is_action_just_pressed("jump"):
-			print("hellooo2")
-
+			#print("hellooo2")
 			start = true
 			$Duck.start = true
 			$ParallaxBackground.playing = true
 			$Timer.start()
+			return
 	
 
 func _on_timer_timeout() -> void:
@@ -52,9 +55,14 @@ func game_over(body):
 	var Bloemen = get_tree().get_nodes_in_group('Bloem')
 	for Bloem in Bloemen:
 		Bloem.start = false
+	if ardV == 3:
+		get_tree().reload_current_scene()
+
 
 
 func _on_control_gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
 		event.pressed
 	get_tree().reload_current_scene()
+	if ardV == 3:
+		get_tree().reload_current_scene()

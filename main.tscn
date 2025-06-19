@@ -430,3 +430,4 @@ offset_bottom = 10.0
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="gui_input" from="Restart/Control" to="." method="_on_control_gui_input"]
 [connection signal="CustomInput" from="ArduinoScript" to="." method="_on_arduino_script_custom_input"]
+[connection signal="CustomInput" from="ArduinoScript" to="Duck" method="_on_arduino_script_custom_input"]

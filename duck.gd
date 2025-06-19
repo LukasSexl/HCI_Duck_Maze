@@ -5,31 +5,43 @@ extends CharacterBody2D
 @export var dive_force: float = 3000.0  # Sterkere zwaartekracht bij duiken
 var start = false
 
-func _physics_process(delta):
+var previous_ardV := -1
+var ardVal = 0
+
+func _on_arduino_script_custom_input(arduinoValue: String) -> void:
+	ardVal = int(arduinoValue)
+	print("Input received:", ardVal)
+
+
+func _physics_process(delta) -> void:
+	var ardV = ardVal
+	ardVal = -1  # Reset input for next frame
+
 	if start == false:
 		$AnimationPlayer.play("DUCK")
+		previous_ardV = ardV
 		return
-	# Zwaartekracht toepassen
-	var _applied_gravity = gravity
-"""
-	# Als speler naar beneden duikt, verhoog de zwaartekracht
-	if Global.ardV == 4: #Input.is_action_pressed("ui_down"):
-		_applied_gravity = dive_force
-		
-	velocity.y += gravity * delta
 
-	# Springen bij pijl omhoog, alleen als je op de grond staat
-	if Global.ardV == 3 and is_on_floor():  #Input.is_action_just_pressed("ui_up") and is_on_floor():
-		velocity.y = -jump_force  # Negatief om omhoog te gaan
-		print("hellooo")
-		
-	if Global.ardV != 4 and is_on_floor(): #is_on_floor() and !Input.is_action_pressed("down"):
+	var _applied_gravity = gravity
+	if ardV == 4:
+		_applied_gravity = dive_force
+
+	# Jump only when ardV == 3 (pressed this frame)
+	if ardV == 3 and is_on_floor():
+		velocity.y = -jump_force
+		print("Jump!")
+
+	velocity.y += _applied_gravity * delta
+
+	# Animations...
+	if ardV != 4 and is_on_floor():
 		$AnimationPlayer.play("RUNNING")
-	if is_on_floor() and Global.ardV == 4: #is_on_floor() and Input.is_action_pressed("down"):
+	elif is_on_floor() and ardV == 4:
 		$AnimationPlayer.play("down")
-	if !is_on_floor():
+		print("ducking")
+	elif !is_on_floor():
 		$AnimationPlayer.play("DUCK")
-		
-			# Beweging uitvoeren
+
 	move_and_slide()
- """
+
+	previous_ardV = ardV
