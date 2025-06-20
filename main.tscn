@@ -333,10 +333,13 @@ region_enabled = true
 region_rect = Rect2(2, 104, 2400, 24)
 
 [node name="Duck" type="CharacterBody2D" parent="."]
+position = Vector2(-4, -7)
 disable_mode = 2
-collision_layer = 2
+collision_layer = 16384
+collision_mask = 8
 script = ExtResource("3_1bvp3")
 jump_force = 700.0
+metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Duck"]
 position = Vector2(99, 280)
@@ -361,6 +364,8 @@ position = Vector2(106, 303)
 shape = SubResource("CircleShape2D_7mycd")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 8
+collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(576.25, 336.25)
@@ -398,7 +403,7 @@ text = "Time: "
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(196, 161)
-zoom = Vector2(0.4, 0.4)
+zoom = Vector2(0.3, 0.3)
 
 [connection signal="area_entered" from="Duck/Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="body_entered" from="Duck/Area2D" to="." method="_on_area_2d_body_entered"]
