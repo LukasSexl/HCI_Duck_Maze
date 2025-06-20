@@ -40,6 +40,7 @@ position = Vector2(50, 50)
 script = null
 
 [node name="ArduinoScript" parent="." instance=ExtResource("4_1nuxl")]
+SkipFrames = 1
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
 [connection signal="CustomInput" from="ArduinoScript" to="node_2d/character" method="_on_arduino_script_custom_input"]

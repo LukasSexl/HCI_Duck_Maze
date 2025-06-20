@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://47kgi8g2m2jh"]
 
-[ext_resource type="Script" path="res://bloemen.gd" id="1_t43qm"]
+[ext_resource type="Script" uid="uid://damsgaasqych5" path="res://bloemen.gd" id="1_t43qm"]
 [ext_resource type="Texture2D" uid="uid://b4bw7wakrv2xp" path="res://Bloemen!.png" id="1_w0f35"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_t43qm"]
