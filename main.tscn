@@ -1,11 +1,10 @@
-[gd_scene load_steps=16 format=3 uid="uid://d1j481tvkvqik"]
+[gd_scene load_steps=15 format=3 uid="uid://d1j481tvkvqik"]
 
 [ext_resource type="Script" uid="uid://cmktp4b6qbdk4" path="res://parallax_background.gd" id="1_0xm2m"]
 [ext_resource type="Script" uid="uid://kqw8l8sqqjku" path="res://main.gd" id="1_lquwl"]
 [ext_resource type="Texture2D" uid="uid://b51kxom7buma1" path="res://offline-sprite-2x.png" id="2_h2yge"]
 [ext_resource type="Script" uid="uid://dvr5mijkersgv" path="res://duck.gd" id="3_1bvp3"]
 [ext_resource type="Texture2D" uid="uid://brtpog51umv61" path="res://Eendjes.png" id="4_1bvp3"]
-[ext_resource type="Texture2D" uid="uid://docesb17v2muj" path="res://Restart.png" id="6_7mycd"]
 [ext_resource type="PackedScene" uid="uid://dcc2s5dxrykp5" path="res://arduinoscript.tscn" id="7_272bh"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7mycd"]
@@ -409,28 +408,13 @@ libraries = {
 position = Vector2(576.25, 336.25)
 shape = SubResource("RectangleShape2D_272bh")
 
-[node name="Restart" type="Sprite2D" parent="."]
-visible = false
-position = Vector2(397.125, 168.125)
-scale = Vector2(1.53, 1.53)
-texture = ExtResource("6_7mycd")
-
-[node name="Control" type="Control" parent="Restart"]
-visible = false
-layout_mode = 3
-anchors_preset = 0
-offset_left = -12.0
-offset_top = -9.0
-offset_right = 12.0
-offset_bottom = 10.0
-
 [node name="ArduinoScript" parent="." instance=ExtResource("7_272bh")]
 SkipFrames = 0
 
 [node name="Timer" type="Timer" parent="."]
 
 [node name="Timer2" type="Timer" parent="."]
-wait_time = 15.0
+wait_time = 2.0
 one_shot = true
 autostart = true
 
@@ -454,7 +438,6 @@ offset_bottom = 39.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Time: "
 
-[connection signal="gui_input" from="Restart/Control" to="." method="_on_control_gui_input"]
 [connection signal="CustomInput" from="ArduinoScript" to="." method="_on_arduino_script_custom_input"]
 [connection signal="CustomInput" from="ArduinoScript" to="Duck" method="_on_arduino_script_custom_input"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

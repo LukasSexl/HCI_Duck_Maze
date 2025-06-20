@@ -4,8 +4,8 @@ extends Node2D
 @onready var tilemap = $TileMapLayer
 
 # Constants
-const ROWS = 3
-const COLS = 3
+const ROWS = 11
+const COLS = 11
 const WALL = Vector2i(0, 0)  # Wall tile coordinates in tileset
 const PATH = Vector2i(1, 0)  # Path tile coordinates in tileset
 
