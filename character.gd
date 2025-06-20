@@ -8,40 +8,78 @@ var move_direction := Vector2.RIGHT  # Default direction
 var direction_string := "right"
 var last_direction_string := "right"  # Track previous direction for animation update
 var lily_collisions = 0
+@onready var camera_2d: Camera2D = $Camera2D
+
+@export var minigame1: PackedScene
+@export var minigame2: PackedScene
+@export var minigame3: PackedScene
+
+@onready var ducky_1: Sprite2D = %ducky1
+@onready var ducky_2: Sprite2D = %ducky2
+@onready var ducky_3: Sprite2D = %ducky3
+@onready var scoreboard_underlay: Sprite2D = %scoreboard_underlay
 
 func _ready():
 	$AnimatedSprite2D.play("right_left_foot")
-
+	get_tree().get_first_node_in_group("arduino").SetUpPort()
+	
 func _physics_process(delta):
 	var ardVal = 3
-	# Update animation if direction changed
 	
 
 func on_lily_collision():
 	lily_collisions += 1
 	if(lily_collisions == 1):
-		get_node("Camera2D/ducky1").show()
+		ducky_1.show()
 	elif(lily_collisions == 2):
-		get_node("Camera2D/ducky2").show()
+		ducky_2.show()
 	else:
-		get_node("Camera2D/ducky3").show()
+		ducky_3.show()
 	print("Hit lily count: ", lily_collisions)
 	start_minigame(lily_collisions)
 
-func start_minigame(index: int):
-	match index:
-		1:
-			print("Start minigame 1")
-			get_tree().change_scene_to_file("res://main.tscn")
-		2:
-			print("Start minigame 2")
-			get_tree().change_scene_to_file("res://levels/game_level.tscn")
-		3:
-			print("Start minigame 3")
-			get_tree().change_scene_to_file("res://snakemain.tscn")
-		_:
-			print("All minigames completed!")
+func instatiate_minigame_number(gameNumber: int):
+	if gameNumber == 1:
+		instantiate_minigame(minigame1)
+	elif gameNumber == 2:
+		instantiate_minigame(minigame1)
+	elif gameNumber == 3:
+		instantiate_minigame(minigame1)
 
+func instantiate_minigame(game: PackedScene):
+	var instance = game.instantiate()
+	var parent = get_tree().get_first_node_in_group("minigame_container")
+	instance.minigame_failed.connect(restart_minigame)
+	parent.add_child(instance)
+	
+	for node in get_tree().get_nodes_in_group("Lilly"):
+		node.visible = false
+	
+	get_tree().get_first_node_in_group("character").visible = false
+	get_tree().get_first_node_in_group("tilemap").visible = false
+
+func restart_minigame():
+	instantiate_minigame(minigame1)
+
+func start_minigame(index: int):
+	instatiate_minigame_number(index)
+	camera_2d.enabled = false
+	#disconnect_arduino()
+
+		 #Connect minigame finish signal
+		#if minigame.has_signal("minigame_finished"):
+			#minigame.connect("minigame_finished", Callable(self, "_on_minigame_finished"))
+	#else:
+		#print("Invalid minigame index: ", index)
+
+func disconnect_arduino():
+	var script = get_tree().get_first_node_in_group("arduino")
+	script.disconnect("CustomInputEventHandler", _on_arduino_script_custom_input)
+	#get_tree().get_first_node_in_group("arduino").CustomInputEventHandler.disconnect(_on_arduino_script_custom_input)
+
+func connect_arduino():
+	var script = get_tree().get_first_node_in_group("arduino")
+	script.connect("CustomInputEventHandler", _on_arduino_script_custom_input)
 
 func _on_arduino_script_custom_input(arduinoValue: String) -> void:
 	var ardVal := int(arduinoValue)

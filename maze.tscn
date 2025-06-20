@@ -1,9 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://c8a6f34ug0gqj"]
+[gd_scene load_steps=10 format=3 uid="uid://c8a6f34ug0gqj"]
 
 [ext_resource type="Script" uid="uid://j02y1yym37an" path="res://maze.gd" id="1_dj01w"]
 [ext_resource type="Texture2D" uid="uid://c3m4kcoiy8eje" path="res://tile.png" id="2_u11kd"]
 [ext_resource type="PackedScene" uid="uid://20nbhdeg4gff" path="res://node_2d.tscn" id="3_u11kd"]
 [ext_resource type="PackedScene" uid="uid://dcc2s5dxrykp5" path="res://arduinoscript.tscn" id="4_1nuxl"]
+[ext_resource type="PackedScene" uid="uid://d1j481tvkvqik" path="res://main.tscn" id="4_mjrf4"]
+[ext_resource type="PackedScene" uid="uid://b8f1ign6hpicr" path="res://levels/game_level.tscn" id="5_nw8dj"]
+[ext_resource type="PackedScene" uid="uid://btk4gnbwgq4jx" path="res://snakemain.tscn" id="6_xhimc"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1nuxl"]
 texture = ExtResource("2_u11kd")
@@ -26,7 +29,7 @@ sources/0 = SubResource("TileSetAtlasSource_1nuxl")
 [node name="Maze" type="Node2D"]
 script = ExtResource("1_dj01w")
 
-[node name="TileMapLayer" type="TileMapLayer" parent="."]
+[node name="TileMapLayer" type="TileMapLayer" parent="." groups=["tilemap"]]
 tile_set = SubResource("TileSet_ugm30")
 
 [node name="Button" type="Button" parent="."]
@@ -36,10 +39,20 @@ offset_bottom = 31.0
 text = "Randomize Map"
 
 [node name="node_2d" parent="." instance=ExtResource("3_u11kd")]
-position = Vector2(50, 50)
 script = null
 
-[node name="ArduinoScript" parent="." instance=ExtResource("4_1nuxl")]
+[node name="character" parent="node_2d" index="0"]
+position = Vector2(50, 50)
+minigame1 = ExtResource("4_mjrf4")
+minigame2 = ExtResource("5_nw8dj")
+minigame3 = ExtResource("6_xhimc")
+
+[node name="Camera2D" parent="node_2d/character" index="1"]
+zoom = Vector2(1, 1)
+
+[node name="MinigameContainer" type="Node2D" parent="." groups=["minigame_container"]]
+
+[node name="ArduinoScript" parent="." groups=["arduino"] instance=ExtResource("4_1nuxl")]
 SkipFrames = 1
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

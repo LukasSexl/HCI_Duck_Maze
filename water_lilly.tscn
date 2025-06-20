@@ -6,7 +6,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iqbc0"]
 size = Vector2(25, 26)
 
-[node name="water_lilly" type="Area2D"]
+[node name="water_lilly" type="Area2D" groups=["Lilly"]]
 script = ExtResource("1_qcrb3")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

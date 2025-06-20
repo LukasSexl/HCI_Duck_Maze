@@ -4,13 +4,14 @@ extends Node2D
 @onready var tilemap = $TileMapLayer
 
 # Constants
-const ROWS = 11
-const COLS = 11
+const ROWS = 5
+const COLS = 5
 const WALL = Vector2i(0, 0)  # Wall tile coordinates in tileset
 const PATH = Vector2i(1, 0)  # Path tile coordinates in tileset
 
 # Maze array
 var maze = []
+
 
 func _ready():
 	# Initialize maze with walls
@@ -110,6 +111,17 @@ func draw_maze():
 		#add_child(duck)
 		
 		#print(duck.position)
+		
+func _on_minigame_finished():
+	var container = get_node("MinigameContainer")
+	if container.get_child_count() > 0:
+		var minigame = container.get_child(0)
+		minigame.queue_free()
+
+	set_process(true)
+	set_physics_process(true)
+	get_tree().paused = false
+
 
 #func _on_button_pressed() -> void:
 	#generate_maze()

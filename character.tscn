@@ -178,10 +178,11 @@ sprite_frames = SubResource("SpriteFrames_0qfo5")
 animation = &"right_right_foot"
 autoplay = "idle_front"
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Camera2D" type="Camera2D" parent="." groups=["mainCamera"]]
 zoom = Vector2(4, 4)
 
 [node name="ducky1" type="Sprite2D" parent="Camera2D"]
+unique_name_in_owner = true
 visible = false
 z_index = 15
 position = Vector2(-452, -413)
@@ -189,6 +190,7 @@ scale = Vector2(4.13278, 4.13278)
 texture = ExtResource("11_c1b4b")
 
 [node name="ducky2" type="Sprite2D" parent="Camera2D"]
+unique_name_in_owner = true
 visible = false
 z_index = 15
 position = Vector2(-382, -413)
@@ -196,6 +198,7 @@ scale = Vector2(4.13278, 4.13278)
 texture = ExtResource("11_c1b4b")
 
 [node name="ducky3" type="Sprite2D" parent="Camera2D"]
+unique_name_in_owner = true
 visible = false
 z_index = 15
 position = Vector2(-312, -413)
@@ -203,6 +206,7 @@ scale = Vector2(4.13278, 4.13278)
 texture = ExtResource("11_c1b4b")
 
 [node name="scoreboard_underlay" type="Sprite2D" parent="Camera2D"]
+unique_name_in_owner = true
 position = Vector2(-500, -500)
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("12_7tnxx")
@@ -212,3 +216,11 @@ centered = false
 scale = Vector2(6, 6)
 shape = SubResource("RectangleShape2D_pjt0s")
 debug_color = Color(0, 0.64639, 0.238186, 0.42)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0

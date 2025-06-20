@@ -1,19 +1,16 @@
-[gd_scene load_steps=15 format=3 uid="uid://d1j481tvkvqik"]
+[gd_scene load_steps=16 format=3 uid="uid://d1j481tvkvqik"]
 
 [ext_resource type="Script" uid="uid://cmktp4b6qbdk4" path="res://parallax_background.gd" id="1_0xm2m"]
 [ext_resource type="Script" uid="uid://kqw8l8sqqjku" path="res://main.gd" id="1_lquwl"]
 [ext_resource type="Texture2D" uid="uid://b51kxom7buma1" path="res://offline-sprite-2x.png" id="2_h2yge"]
 [ext_resource type="Script" uid="uid://dvr5mijkersgv" path="res://duck.gd" id="3_1bvp3"]
 [ext_resource type="Texture2D" uid="uid://brtpog51umv61" path="res://Eendjes.png" id="4_1bvp3"]
+[ext_resource type="PackedScene" uid="uid://47kgi8g2m2jh" path="res://bloemen.tscn" id="6_272bh"]
 [ext_resource type="PackedScene" uid="uid://dcc2s5dxrykp5" path="res://arduinoscript.tscn" id="7_272bh"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7mycd"]
 radius = 27.0
 height = 58.0
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1bvp3"]
-radius = 19.0
-height = 72.0
 
 [sub_resource type="Animation" id="Animation_1bvp3"]
 resource_name = "DUCK"
@@ -77,18 +74,6 @@ tracks/4/keys = {
 "update": 1,
 "values": [false]
 }
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("CollisionShape2D2:disabled")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
 
 [sub_resource type="Animation" id="Animation_lquwl"]
 length = 0.001
@@ -151,18 +136,6 @@ tracks/4/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("CollisionShape2D2:disabled")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_7mycd"]
@@ -229,18 +202,6 @@ tracks/4/keys = {
 "update": 1,
 "values": [false, false]
 }
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("CollisionShape2D2:disabled")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
 
 [sub_resource type="Animation" id="Animation_272bh"]
 resource_name = "down"
@@ -306,18 +267,6 @@ tracks/4/keys = {
 "update": 1,
 "values": [true]
 }
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("CollisionShape2D2:disabled")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_5vw27"]
 _data = {
@@ -327,11 +276,17 @@ _data = {
 &"down": SubResource("Animation_272bh")
 }
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_7mycd"]
+radius = 26.17
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_272bh"]
 size = Vector2(1152.5, 24.5)
 
 [node name="Main" type="Node2D"]
+process_mode = 3
+z_index = 4096
 script = ExtResource("1_lquwl")
+FLOWER = ExtResource("6_272bh")
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 script = ExtResource("1_0xm2m")
@@ -378,7 +333,10 @@ region_enabled = true
 region_rect = Rect2(2, 104, 2400, 24)
 
 [node name="Duck" type="CharacterBody2D" parent="."]
+disable_mode = 2
+collision_layer = 2
 script = ExtResource("3_1bvp3")
+jump_force = 700.0
 
 [node name="Sprite2D" type="Sprite2D" parent="Duck"]
 position = Vector2(99, 280)
@@ -391,16 +349,16 @@ region_rect = Rect2(60, 32, 21, 28)
 position = Vector2(96, 297)
 shape = SubResource("CapsuleShape2D_7mycd")
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Duck"]
-position = Vector2(81, 307)
-rotation = 1.5708
-shape = SubResource("CapsuleShape2D_1bvp3")
-disabled = true
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Duck"]
 libraries = {
 &"": SubResource("AnimationLibrary_5vw27")
 }
+
+[node name="Area2D" type="Area2D" parent="Duck"]
+position = Vector2(106, 303)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Duck/Area2D"]
+shape = SubResource("CircleShape2D_7mycd")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
@@ -413,8 +371,8 @@ SkipFrames = 0
 
 [node name="Timer" type="Timer" parent="."]
 
-[node name="Timer2" type="Timer" parent="."]
-wait_time = 2.0
+[node name="Duration" type="Timer" parent="."]
+wait_time = 15.0
 one_shot = true
 autostart = true
 
@@ -438,7 +396,13 @@ offset_bottom = 39.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Time: "
 
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(196, 161)
+zoom = Vector2(0.4, 0.4)
+
+[connection signal="area_entered" from="Duck/Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="body_entered" from="Duck/Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="CustomInput" from="ArduinoScript" to="." method="_on_arduino_script_custom_input"]
 [connection signal="CustomInput" from="ArduinoScript" to="Duck" method="_on_arduino_script_custom_input"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
-[connection signal="timeout" from="Timer2" to="." method="_on_timer_2_timeout"]
+[connection signal="timeout" from="Duration" to="." method="_on_timer_2_timeout"]

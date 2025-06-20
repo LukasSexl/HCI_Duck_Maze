@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://bmm51wjj4hs1y" path="res://ArduinoScript.cs" id="1_wtcfe"]
 [ext_resource type="PackedScene" uid="uid://bl57duoejil2k" path="res://character.tscn" id="2_0e48y"]
 
-[node name="node_2d" type="Node2D"]
+[node name="node_2d" type="Node2D" groups=["character"]]
 script = ExtResource("1_wtcfe")
 
 [node name="character" parent="." instance=ExtResource("2_0e48y")]

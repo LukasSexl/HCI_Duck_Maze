@@ -13,27 +13,6 @@ public partial class ArduinoScript : Node
 	[Signal]
 	public delegate void CustomInputEventHandler(string arduinoValue); // ✅ Must end with 'EventHandler'
 
-	public override void _Ready()
-	{
-		try
-		{
-			serialPort = new SerialPort
-			{
-				PortName = "COM4",
-				BaudRate = 9600,
-				ReadTimeout = 100
-			};
-			serialPort.Open();
-			GD.Print("Serial port opened.");
-
-			Connect("CustomInput", new Callable(this, nameof(OnCustomInput)));
-		}
-		catch (Exception ex)
-		{
-			GD.PrintErr("Error opening serial port: " + ex.Message);
-		}
-	}
-
 	public override void _Process(double delta)
 	{
 		if (serialPort == null || !serialPort.IsOpen)
@@ -70,13 +49,38 @@ public partial class ArduinoScript : Node
 	{
 	   // GD.Print("Received from Arduino: " + arduinoValue);
 	}
+	
+	public void ClosePort()
+	{
+		serialPort.Close();
+	}
 
+	public void SetUpPort() 
+	{
+		try
+		{
+			serialPort = new SerialPort
+			{
+				PortName = "COM4",
+				BaudRate = 9600,
+				ReadTimeout = 100
+			};
+			serialPort.Open();
+			GD.Print("Serial port opened.");
+
+			Connect("CustomInput", new Callable(this, nameof(OnCustomInput)));
+		}
+		catch (Exception ex)
+		{
+			GD.PrintErr("Error opening serial port: " + ex.Message);
+		}
+	}
 
 	public override void _ExitTree()
 	{
 		if (serialPort != null && serialPort.IsOpen)
 		{
-			serialPort.Close();
+			ClosePort();
 			GD.Print("Serial port closed.");
 		}
 	}

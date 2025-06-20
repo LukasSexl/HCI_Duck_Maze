@@ -63,6 +63,9 @@ script = ExtResource("12_u61ii")
 
 [node name="ArduinoScript" parent="." instance=ExtResource("13_sxa3x")]
 
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(0.2, 0.2)
+
 [connection signal="timeout" from="MoveTimer" to="." method="_on_move_timer_timeout"]
 [connection signal="restart" from="CanvasOverMenu" to="." method="_on_canvas_over_menu_restart"]
 [connection signal="CustomInput" from="ArduinoScript" to="." method="_on_arduino_script_custom_input"]
