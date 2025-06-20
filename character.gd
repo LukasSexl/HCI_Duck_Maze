@@ -32,13 +32,13 @@ func start_minigame(index: int):
 	match index:
 		1:
 			print("Start minigame 1")
-			get_tree().change_scene_to_file("res://levels/game_level.tscn")
+			get_tree().change_scene_to_file("res://main.tscn")
 		2:
 			print("Start minigame 2")
-			get_tree().change_scene_to_file("res://minigame_2.tscn")
+			get_tree().change_scene_to_file("res://levels/game_level.tscn")
 		3:
 			print("Start minigame 3")
-			get_tree().change_scene_to_file("res://minigame_3.tscn")
+			get_tree().change_scene_to_file("res://snakemain.tscn")
 		_:
 			print("All minigames completed!")
 
